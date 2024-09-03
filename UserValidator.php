@@ -12,7 +12,7 @@ class UserValidator
         */
         $pattern = '/^(?=[^@]*[a-zA-Z])[\w.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
 
-        // Compliance check
+        // Return compliance check
         if (preg_match($pattern, $email)) {
             return true;
         } else {
@@ -29,7 +29,7 @@ class UserValidator
         $digitCheck = preg_match('/\d/', $password); // Contains at least one digit
         $specialCharCheck = preg_match('/[\W]/', $password); // Contains one special sign
 
-        // Compliance check
+        // Return compliance check
         return $lengthCheck && $uppercaseCheck && $lowercaseCheck && $digitCheck && $specialCharCheck;
     }
 }
