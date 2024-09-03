@@ -19,4 +19,17 @@ class UserValidator
             return false;
         }
     }
+
+    public function validatePassword(string $password): bool
+    {
+        // Password validation
+        $lengthCheck = strlen($password) >= 8; // Minimum 8 characters
+        $uppercaseCheck = preg_match('/[A-Z]/', $password); // Contains at least one uppercase letter
+        $lowercaseCheck = preg_match('/[a-z]/', $password); // Contains at least one lowercase letter
+        $digitCheck = preg_match('/\d/', $password); // Contains at least one digit
+        $specialCharCheck = preg_match('/[\W]/', $password); // Contains one special sign
+
+        // Compliance check
+        return $lengthCheck && $uppercaseCheck && $lowercaseCheck && $digitCheck && $specialCharCheck;
+    }
 }
